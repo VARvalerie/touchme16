@@ -67,6 +67,11 @@ function initCaptureDevice() {
 //let soundIndex = myVida.activeZones.indexOf(zone);
 //sounds[soundIndex].play();
 // }
+function playSample(_sample) {
+  if(_sample === null) {console.log('[playSample] _sample === null'); return;}
+  if(_sample === undefined) {console.log('[playSample] _sample === undefined'); return;}
+  if(!_sample.isPlaying()) _sample.play();
+}
 
 function setup() {
   createCanvas(canvasWidth, canvasHeight);
@@ -219,11 +224,7 @@ function onActiveZoneChange(_vidaActiveZone) {
   playSample(sounds[_vidaActiveZone.id])
 }
 
-function playSample(_sample) {
-  if(_sample === null) {console.log('[playSample] _sample === null'); return;}
-  if(_sample === undefined) {console.log('[playSample] _sample === undefined'); return;}
-  if(!_sample.isPlaying()) _sample.play();
-}
+
 
 /*
   Capture current video frame and put it into the VIDA's background buffer.
